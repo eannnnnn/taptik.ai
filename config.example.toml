@@ -1,0 +1,18 @@
+# Copy this file to config.toml and replace the placeholder values.
+# This example is the shared contract from GOAL.md and should stay free of secrets.
+
+LANG = "ko"
+
+[bot.taptik]
+client = "oh-my-opencode"
+token = "discord-bot-token-here"
+workspace = "~/.taptik"
+
+# Optional: default agent identity for this bot runtime.
+agent = "Hephaestus"
+
+# Optional: enable ultrawork mode for prompts routed through this bot.
+ultrawork = true
+
+# Add more bots with additional [bot.<name>] sections.
+# Supported clients: oh-my-opencode, opencode, claude-code, codex
