@@ -19,20 +19,20 @@ pnpm install
 Copy the template and edit your local runtime config:
 
 ```bash
-cp config-sample.toml config.toml
+cp config.example.toml config.toml
 ```
 
-Then edit `config.toml` with your real token(s). The full commented template lives in `config-sample.toml`.
+Then edit `config.toml` with your real token(s). The full commented template lives in `config.example.toml`.
 
 Notes:
 
-- `enabled` defaults to `true` if omitted.
-- `thinking_level` defaults to `medium` and is passed to `opencode run --variant` for DM/mention execution.
-- `scheduler.jobs[].agent_name` must match one of `[[bots]].name`.
-- `scheduler.jobs[].exec` is a natural-language prompt passed to `opencode run --agent <agent_name> -- "<prompt>"`.
-- Scheduler jobs execute in the matched bot `workspace` directory.
+- `LANG` defaults to `ko` if omitted.
+- Each bot lives under `[bot.<name>]`.
+- Required bot fields are `client`, `token`, and `workspace`.
+- Optional bot fields are `agent` and `ultrawork`.
+- Relative `workspace` paths resolve from the `config.toml` directory.
 - Keep real bot tokens in local-only config values and never commit secrets.
-- `config.toml` is gitignored; commit `config-sample.toml` for shared defaults.
+- `config.toml` is gitignored; commit `config.example.toml` for shared defaults.
 
 ## Run
 
