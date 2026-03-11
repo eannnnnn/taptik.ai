@@ -176,10 +176,16 @@ class OhMyOpencodeAgentStrategy implements AgentStrategy {
   ) {}
 
   async execute(request: AgentExecutionRequest): Promise<AgentExecutionResult> {
-    void request.agent;
-
     try {
-      const runOutput = await this.runCommand('bunx', ['oh-my-opencode', 'run', '--json', '--no-timestamp', request.prompt], request.workspace);
+      const args = ['oh-my-opencode', 'run', '--json', '--no-timestamp'];
+
+      if (request.agent) {
+        args.push('--agent', request.agent);
+      }
+
+      args.push(request.prompt);
+
+      const runOutput = await this.runCommand('bunx', args, request.workspace);
 
       const runResult = extractLastJsonLine<RunResult>(runOutput.stdout);
 
